@@ -1,0 +1,6 @@
+{
+  "preset": "airbnb",
+  "requirePaddingNewLinesBeforeLineComments": null,
+  "safeContextKeyword" : null,
+  "requireShorthandArrowFunctions": null
+}

@@ -1,0 +1,45 @@
+
+<!-- saved from url=(0036)https://schmich.github.io/instascan/ -->
+<html data-xlabs-extension="1" data-xlabs-extension-ready="1" data-xlabs-extension-version="2.6.1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Instascan – Demo</title>
+    <link rel="icon" type="image/png" href="./scan/favicon.png">
+    <link rel="stylesheet" href="./scan/style.css">
+    <script type="text/javascript" src="./scan/adapter.min.js"></script>
+    <script type="text/javascript" src="./scan/vue.min.js"></script>
+    <script type="text/javascript" src="./scan/instascan.min.js"></script>
+  <style type="text/css">#xLabsCanvas{pointer-events:none;top:0;left:0;position:fixed;z-index:2147483646;}#xLabsCanvas.allow-pointer{pointer-events:auto;}</style></head>
+  <body>
+    <div id="app">
+
+<div class="sidebar">
+        <section class="cameras">
+          <h2>Cameras</h2>
+          <ul>
+            <li v-if="cameras.length === 0" class="empty">No cameras found</li>
+            <li v-for="camera in cameras">
+              <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
+              <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
+                <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
+              </span>
+            </li>
+          </ul>
+        </section>
+        <section class="scans">
+          <h2>Scans</h2>
+          <ul v-if="scans.length === 0">
+            <li class="empty">No scans yet</li>
+          </ul>
+          <transition-group name="scans" tag="ul">
+            <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
+          </transition-group>
+        </section>
+      </div>
+      <div class="preview-container">
+        <video id="preview" autoplay="autoplay" class="active" style="transform: scaleX(-1);">
+        </video>
+      </div>
+    </div>
+    <script type="text/javascript" src="./scan/app.js"></script>
+
+
+  </body></html>
